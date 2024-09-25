@@ -1,0 +1,99 @@
+int conta;
+string utente;
+List <string> listaTuttiAtleti = new List<string> ();
+bool continua = true;
+
+void aggiungi(List<string> elenco)
+{
+    string nome;
+    Console.Write("che nome vuoi inserire? ");
+    nome = Console.ReadLine();
+    while (nome=="")
+    {
+        Console.Write("che nome vuoi inserire? ");
+        nome = Console.ReadLine();
+    }
+    elenco.Add(nome);
+}
+
+void printaLista(List<string> elencoAtleti)
+{
+    conta = 0;
+    foreach (string atleta in elencoAtleti)
+    {
+        Console.Write($" numero atleta {conta}: {atleta}");
+    }
+    Console.WriteLine(); //per mandare a capo
+}
+void togli(List<string> elenco)
+{
+    printaLista(elenco);
+    Console.Write("inserisci il numero dell'atleta che vuoi rimuovere ");
+    int rimuovi = int.Parse(Console.ReadLine());
+    while (rimuovi<0||rimuovi>elenco.Count())
+    {
+        Console.Write("inserisci il numero dell'atleta che vuoi rimuovere ");
+        rimuovi = int.Parse(Console.ReadLine());
+    }
+    elenco.Remove(elenco[rimuovi]);
+}
+
+void togli(List<string> elencoTutto)
+{
+    printaLista(elencoTutto);
+    Console.Write("inserisci il numero dell'atleta che vuoi toglire ");
+    int numeroAtleta = int.Parse(Console.ReadLine());
+    while ( numeroAtleta< 0 || numeroAtleta > elencoTutto.Count())
+    {
+        Console.Write("inserisci il numero dell'atleta che vuoi rimuovere ");
+        numeroAtleta = int.Parse(Console.ReadLine());
+    }
+    elencoTutto.Remove(elencoTutto[numeroAtleta]);
+}
+
+void modifica(List<string> elencoTutto)
+{
+    printaLista(elencoTutto);
+    Console.Write("inserisci il numero dell'atleta che vuoi toglire ");
+    int numeroAtleta = int.Parse(Console.ReadLine());
+    while (numeroAtleta < 0 || numeroAtleta > elencoTutto.Count())
+    {
+        Console.Write("inserisci il numero dell'atleta che vuoi modificare ");
+        numeroAtleta = int.Parse(Console.ReadLine());
+    }
+    Console.Write("inserisci il nome con sui vuoi modificare ");
+    string inserire = Console.ReadLine();
+    while (inserire == "")
+    {
+        Console.Write("inserisci il nome con sui vuoi modificare ");
+        string nuovo = Console.ReadLine();
+    }
+    elencoTutto[numeroAtleta] = inserire;
+    }
+    while (continua = true)
+    {
+        printaLista(listaTuttiAtleti);
+        Console.Write("che cosa vuoi fare aggiungere, togliere o modificare qualcosa della lista o andare via dal programma");
+        utente = Console.ReadLine();
+        while (utente != "aggiungere" && utente != "togliere" && utente != "modificare" && utente != "andare via")
+        {
+            Console.Write("che cosa vuoi fare aggiungere, togliere o modificare qualcosa della lista o andare via dal programma");
+            utente = Console.ReadLine();
+        }
+        if (utente == "aggiungere")
+        {
+            aggiungi(listaTuttiAtleti);
+        }
+        if (utente == "togliere")
+        {
+            togli(listaTuttiAtleti);
+        }
+        if (utente == "modificare")
+        {
+            modifica(listaTuttiAtleti);
+        }
+        if (utente == "andare via")
+        {
+            continua = false;
+        }
+    }
